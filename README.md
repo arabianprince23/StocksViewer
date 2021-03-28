@@ -22,3 +22,9 @@
 <img src="https://user-images.githubusercontent.com/57250290/112748212-ff9f7600-8fc2-11eb-8bd2-fb0eaad7f6fd.mov" alt="alt text" width="300" height="600">
 
 Все изменения, разумеется, сохраняются на устройстве. Для этого используется CoreData.
+
+#### Внутренний экран акции
+
+На внутреннем экране акции, представлены основные данные по акции: графики за разные периоды, основные показатели, новости компании.
+<img src="https://user-images.githubusercontent.com/57250290/112748263-586f0e80-8fc3-11eb-9ae3-e953eaf60bf3.mov" alt="alt text" width="300" height="600">
+
