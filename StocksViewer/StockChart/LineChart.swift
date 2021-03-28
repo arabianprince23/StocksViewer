@@ -1,9 +1,6 @@
-//  Взято для приложения StocksViewer с https://github.com/pichukov/LightChart
+//  Взято для приложения StocksViewer с pichukov/LightChart
 //
 //  LineChart.swift
-//  
-//
-//  Created by Alexey Pichukov on 19.08.2020.
 //
 
 import SwiftUI
@@ -58,47 +55,47 @@ public struct LineChart: View {
     
     private var chart: some View {
         switch type {
-            case .outline(let color, let lineWidth):
-                return AnyView(linePath(points: points)
-                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round)))
-            case .filled(let color, let lineWidth):
-                return AnyView(ZStack {
-                    linePathGradient(points: points)
-                        .fill(LinearGradient(
-                            gradient: .init(colors: [color.opacity(0.2), color.opacity(0.02)]),
-                            startPoint: .init(x: 0.5, y: 1),
-                            endPoint: .init(x: 0.5, y: 0)
-                        ))
-                    linePath(points: points)
-                        .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round))
-                })
-            case .customFilled(let color, let lineWidth, let fillGradient):
-                return AnyView(ZStack {
-                    linePathGradient(points: points)
-                        .fill(fillGradient)
-                    linePath(points: points)
-                        .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round))
-                })
+        case .outline(let color, let lineWidth):
+            return AnyView(linePath(points: points)
+                            .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round)))
+        case .filled(let color, let lineWidth):
+            return AnyView(ZStack {
+                linePathGradient(points: points)
+                    .fill(LinearGradient(
+                        gradient: .init(colors: [color.opacity(0.2), color.opacity(0.02)]),
+                        startPoint: .init(x: 0.5, y: 1),
+                        endPoint: .init(x: 0.5, y: 0)
+                    ))
+                linePath(points: points)
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round))
+            })
+        case .customFilled(let color, let lineWidth, let fillGradient):
+            return AnyView(ZStack {
+                linePathGradient(points: points)
+                    .fill(fillGradient)
+                linePath(points: points)
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineJoin: .round))
+            })
         }
     }
     
     private var line: some View {
         switch currentValueLineType {
-            case .none:
-                return AnyView(EmptyView())
-            case .line(let color, let lineWidth):
-                return AnyView(
-                    currentValueLinePath(points: points)
-                        .stroke(color, style: StrokeStyle(lineWidth: lineWidth))
-                )
-            case .dash(let color, let lineWidth, let dash):
-                return AnyView(
-                    currentValueLinePath(points: points)
-                        .stroke(color, style: StrokeStyle(lineWidth: lineWidth, dash: dash))
-                )
+        case .none:
+            return AnyView(EmptyView())
+        case .line(let color, let lineWidth):
+            return AnyView(
+                currentValueLinePath(points: points)
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth))
+            )
+        case .dash(let color, let lineWidth, let dash):
+            return AnyView(
+                currentValueLinePath(points: points)
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, dash: dash))
+            )
         }
     }
-
+    
     // MARK: private functions
     
     private func linePath(points: [CGPoint]) -> Path {

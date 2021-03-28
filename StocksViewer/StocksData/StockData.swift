@@ -26,7 +26,6 @@ public class StockData: ObservableObject {
     private let newsDiskConfig: DiskConfig
     private let newsMemoryConfig: MemoryConfig
     
-    
     init() {
         
         self.isInternetAvailible = Reachability.isConnectedToNetwork()

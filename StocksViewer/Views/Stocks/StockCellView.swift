@@ -47,6 +47,7 @@ struct StockCellView: View {
                             }
                             .sheet(isPresented: $showDetailsView, content: {
                                 StockDetailsView(stock: self.stock)
+                                    .environmentObject(stocksData)
                             })
                     }
                     

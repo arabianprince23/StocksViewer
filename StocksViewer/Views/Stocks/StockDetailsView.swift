@@ -17,6 +17,7 @@ struct StockDetailsView: View {
     @State var yearButtonChosen: Bool = false
     @State var stock: Stock
     @State var minValueOfPrice: String = "-"
+    @State var averageValueOfPrice: String = "-"
     @State var maxValueOfPrice: String = "-"
     @State var chartColor: Color = Color.red
     @State var news: [News] = []
@@ -62,7 +63,9 @@ struct StockDetailsView: View {
                     
                     ScrollView {
                         
-                        // Блок кнопок
+                        //
+                        // Блок кнопок над графиком с временными интервалами
+                        //
                         HStack (spacing: 32) {
                             if (weekButtonChosen) {
                                 HStack {
@@ -85,6 +88,7 @@ struct StockDetailsView: View {
                                         self.points = res
                                         minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
                                         maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
+                                        averageValueOfPrice = NSString(format: "%.2f", (((points.max() ?? 0.0) + (points.min() ?? 0.0)) / 2.0)) as String
                                         self.chartColor = (self.points.last ?? 0.0) - (self.points.first ?? 0.0) >= 0.0 ? Color.green : Color.red
                                     }
                                 }
@@ -111,6 +115,7 @@ struct StockDetailsView: View {
                                         self.points = res
                                         minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
                                         maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
+                                        averageValueOfPrice = NSString(format: "%.2f", (((points.max() ?? 0.0) + (points.min() ?? 0.0)) / 2.0)) as String
                                         self.chartColor = (self.points.last ?? 0.0) - (self.points.first ?? 0.0) >= 0.0 ? Color.green : Color.red
                                     }
                                 }
@@ -137,6 +142,7 @@ struct StockDetailsView: View {
                                         self.points = res
                                         minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
                                         maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
+                                        averageValueOfPrice = NSString(format: "%.2f", (((points.max() ?? 0.0) + (points.min() ?? 0.0)) / 2.0)) as String
                                         self.chartColor = (self.points.last ?? 0.0) - (self.points.first ?? 0.0) >= 0.0 ? Color.green : Color.red
                                     }
                                 }
@@ -145,7 +151,9 @@ struct StockDetailsView: View {
                         }
                         .padding([.leading, .trailing, .top])
                         
+                        //
                         // График
+                        //
                         VStack (spacing: 32) {
                             HStack {
                                 Text("График \("\(stock.symbol ?? "")".uppercased()) за выбранный период")
@@ -156,6 +164,10 @@ struct StockDetailsView: View {
                                 
                                 VStack (alignment: .trailing) {
                                     Text("\(maxValueOfPrice)")
+                                        .font(.caption2)
+                                        .foregroundColor(Color.white.opacity(0.6))
+                                    Spacer()
+                                    Text("\(averageValueOfPrice)")
                                         .font(.caption2)
                                         .foregroundColor(Color.white.opacity(0.6))
                                     Spacer()
@@ -174,6 +186,7 @@ struct StockDetailsView: View {
                                             self.points = res
                                             minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
                                             maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
+                                            averageValueOfPrice = NSString(format: "%.2f", (((points.max() ?? 0.0) + (points.min() ?? 0.0)) / 2.0)) as String
                                             self.chartColor = (self.points.last ?? 0.0) - (self.points.first ?? 0.0) >= 0.0 ? Color.green : Color.red
                                         }
                                     }
@@ -237,7 +250,7 @@ struct StockDetailsView: View {
                                 .foregroundColor(Color.white.opacity(0.6))
                             Spacer()
                         }
-                        .padding([.top, .leading, .trailing])
+                        .padding([.leading, .trailing])
                         
                         if (companyHasNews) {
                             NewsListView(news: news)

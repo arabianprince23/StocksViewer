@@ -15,8 +15,10 @@ struct MainView: View {
     @State var searchResponseStocks: [SearchStock] = [] // Массив, обновляющийся в зависимости от запроса
     @State var timer: Timer?
     @State var showCleanCacheAlert: Bool = false
+    var launchedBefore: Bool
     
     init() {
+        self.launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         webService = WebService()
         UITableViewCell.appearance().backgroundColor = .black
         UITableView.appearance().backgroundColor = .black
@@ -142,6 +144,18 @@ struct MainView: View {
             //
             .onTapGesture {
                 UIApplication.shared.endEditing()
+            }
+            .onAppear() {
+                if (!launchedBefore)  {
+                    UserDefaults.standard.set(true, forKey: "launchedBefore")
+                    self.stocksData.saveStockSymbol(with: "AAPL")
+                    self.stocksData.saveStockSymbol(with: "TSLA")
+                    self.stocksData.saveStockSymbol(with: "AMZN")
+                    self.stocksData.saveStockSymbol(with: "MSFT")
+                    self.stocksData.saveStockSymbol(with: "AMD")
+                    self.stocksData.saveStockSymbol(with: "FB")
+                    self.stocksData.saveStockSymbol(with: "BABA")
+                }
             }
         }
     }

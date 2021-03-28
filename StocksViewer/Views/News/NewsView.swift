@@ -29,8 +29,9 @@ struct NewsView: View {
                 .ignoresSafeArea()
             
             VStack {
-                
+                //
                 // Верхняя часть, титулы
+                //
                 VStack {
                     viewHeader(text: "Новости")
                         .padding(.top)
@@ -54,6 +55,9 @@ struct NewsView: View {
                 }
                 .padding([.leading, .trailing])
                 
+                //
+                // При доступе к сети, новости с сервера, иначе отображаем кэшированные новости
+                //
                 if (stocksData.isInternetAvailible) {
                     if (dataIsReady) {
                         NewsListView(news: news)

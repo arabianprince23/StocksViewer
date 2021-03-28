@@ -1,9 +1,6 @@
-//  Взято для приложения StocksViewer с https://github.com/pichukov/LightChart
+//  Взято для приложения StocksViewer с pichukov/LightChart
 //
 //  ChartType.swift
-//  
-//
-//  Created by Alexey Pichukov on 19.08.2020.
 //
 
 import SwiftUI 

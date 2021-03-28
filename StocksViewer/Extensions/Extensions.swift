@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 
 // MARK: UIApplication
+
 extension UIApplication {
     
     /**

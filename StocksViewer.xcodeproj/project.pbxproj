@@ -141,7 +141,7 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		D9082D44260731600068BB99 /* Chart */ = {
+		D9082D44260731600068BB99 /* StockChart */ = {
 			isa = PBXGroup;
 			children = (
 				D9082D7F260741280068BB99 /* ChartType.swift */,
@@ -151,7 +151,7 @@
 				D9082D81260741280068BB99 /* LineChart.swift */,
 				D9082D7E260741280068BB99 /* Math.swift */,
 			);
-			path = Chart;
+			path = StockChart;
 			sourceTree = "<group>";
 		};
 		D91199162603B9B10070EB56 /* StocksData */ = {
@@ -220,7 +220,7 @@
 				D9BF72772603747300BDED3E /* Utilities */,
 				D9BF726B2603742A00BDED3E /* Models */,
 				D9BF72A62603750700BDED3E /* WebService */,
-				D9082D44260731600068BB99 /* Chart */,
+				D9082D44260731600068BB99 /* StockChart */,
 				D9BF72832603749D00BDED3E /* Views */,
 				D911991B2604DFF00070EB56 /* Extensions */,
 				D9BF725F260373E500BDED3E /* AppDelegate.swift */,

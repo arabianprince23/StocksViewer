@@ -1,10 +1,7 @@
-//  Взято для приложения StocksViewer с https://github.com/pichukov/LightChart
+//  Взято для приложения StocksViewer с pichukov/LightChart
 //
 //  DataRepresentable.swift
 //  
-//
-//  Created by Alexey Pichukov on 19.08.2020.
-//
 
 import Foundation
 import CoreGraphics 
@@ -33,12 +30,12 @@ extension DataRepresentable {
     
     func lineWidth(visualType: ChartVisualType) -> CGFloat {
         switch visualType {
-            case .outline(_, let lineWidth):
-                return lineWidth
-            case .filled(_, let lineWidth):
-                return lineWidth
-            case .customFilled(_, let lineWidth, _):
-                return lineWidth
+        case .outline(_, let lineWidth):
+            return lineWidth
+        case .filled(_, let lineWidth):
+            return lineWidth
+        case .customFilled(_, let lineWidth, _):
+            return lineWidth
         }
     }
     

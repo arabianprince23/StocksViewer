@@ -8,7 +8,6 @@ target 'StocksViewer' do
   # Pods for StocksViewer
   pod 'SwiftyJSON'
   pod 'Alamofire'
-  pod 'Starscream'
   pod 'Cache'
 
 end
