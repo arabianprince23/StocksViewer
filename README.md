@@ -41,8 +41,7 @@
 ######
 <img src="https://user-images.githubusercontent.com/57250290/112748372-e0551880-8fc3-11eb-8c7a-a86125a44f8c.mov" alt="alt text" width="300" height="600">
 
-
-
+Ещё больше плюшек - в приложении!
 
 
 
