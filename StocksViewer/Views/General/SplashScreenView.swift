@@ -27,7 +27,7 @@ struct SplashScreenView: View {
                     Text("Обзор")
                 }
             
-            NewsView()
+            NewsView().environmentObject(stocksData)
                 .tabItem {
                     Image(systemName: "note.text")
                     Text("Новости")
