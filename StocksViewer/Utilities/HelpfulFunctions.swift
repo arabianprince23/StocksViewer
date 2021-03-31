@@ -19,6 +19,16 @@ func getDate() -> String {
 }
 
 /**
+ Тайтл для экрана отчётов компаний
+ */
+func dateForReports() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd.MM"
+    let dateAfterWeek = (Calendar.current.date(byAdding: .day, value: +7, to: Date()) ?? Date()) as Date
+    return "\(dateFormatter.string(from: Date())) - \(dateFormatter.string(from: dateAfterWeek))"
+}
+
+/**
  Тайтл с датой
  */
 func viewDateTitle() -> some View {

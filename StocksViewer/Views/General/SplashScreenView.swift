@@ -32,6 +32,12 @@ struct SplashScreenView: View {
                     Image(systemName: "note.text")
                     Text("Новости")
                 }
+            
+            ReportsView()
+                .tabItem {
+                    Image(systemName: "exclamationmark.bubble")
+                    Text("Отчётности")
+                }
         }
     }
 }

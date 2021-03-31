@@ -203,4 +203,29 @@ class WebService: ObservableObject {
             }
         }
     }
+    
+    func getReports(completion: @escaping ([Report]) -> Void) {
+        // https://finnhub.io/api/v1/calendar/earnings?from=2021-03-01&to=2021-03-09&token=c18dev748v6oak5h3l2g
+        
+        var reports: [Report] = []
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateAfterWeek = (Calendar.current.date(byAdding: .day, value: +7, to: Date()) ?? Date()) as Date
+        
+        let reportsDataURL = "https://finnhub.io/api/v1/calendar/earnings?from=\(dateFormatter.string(from: Date()))&to=\(dateFormatter.string(from: dateAfterWeek))&token=\(tokenFinHub)"
+        
+        AF.request(reportsDataURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                
+                // TODO
+                
+                completion(reports)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

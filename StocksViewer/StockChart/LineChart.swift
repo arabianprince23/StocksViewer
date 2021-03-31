@@ -14,16 +14,6 @@ public struct LineChart: View {
     private let currentValueLineType: CurrentValueLineType
     private var points: [CGPoint] = []
     
-    /// Creates a new `LineChart`
-    ///
-    /// - Parameters:
-    ///     - data: A data set that should be presented on the chart
-    ///     - frame: A frame from the parent view
-    ///     - visualType: A type of chart, `.outline` by default
-    ///     - offset: An offset for the chart, a space below the chart in percentage (0 - 1)
-    ///               For example `offset: 0.2` means that the chart will occupy 80% of the upper
-    ///               part of the view
-    ///     - currentValueLineType: A type of current value line (`none` for no line on chart)
     public init(data: [Double],
                 frame: CGRect,
                 visualType: ChartVisualType = .outline(color: .red, lineWidth: 2),
