@@ -119,6 +119,11 @@ class WebService: ObservableObject {
         var lastDay = TimeInterval()
         
         switch period {
+        case "Day":
+            firstDay = ((Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()) as Date).timeIntervalSince1970
+            lastDay = Date().timeIntervalSince1970
+            resolution = "15"
+            
         case "Week":
             firstDay = ((Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()) as Date).timeIntervalSince1970
             lastDay = Date().timeIntervalSince1970

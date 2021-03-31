@@ -13,7 +13,7 @@ import Cache
 /**
  Класс, хранящий в себе все основные данные пользователя, и отвечающий за работу с хранилищем
  */
-public class StockData: ObservableObject {
+public class StocksData: ObservableObject {
     
     // Избранные акции
     @Published var isInternetAvailible: Bool

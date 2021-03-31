@@ -9,10 +9,11 @@ import SwiftUI
 
 struct StockDetailsView: View {
     
-    @EnvironmentObject var stockData: StockData
+    @EnvironmentObject var stockData: StocksData
     @ObservedObject var webService = WebService()
     @State var points: [Double] = []
-    @State var weekButtonChosen: Bool = true
+    @State var dayButtonChosen: Bool = true
+    @State var weekButtonChosen: Bool = false
     @State var monthButtonChosen: Bool = false
     @State var yearButtonChosen: Bool = false
     @State var stock: Stock
@@ -60,27 +61,56 @@ struct StockDetailsView: View {
                     .padding(.top, -4)
                 
                 if (stockData.isInternetAvailible) {
-                    
                     ScrollView {
                         
                         //
                         // Блок кнопок над графиком с временными интервалами
                         //
                         HStack (spacing: 32) {
-                            if (weekButtonChosen) {
+                            
+                            if (dayButtonChosen) {
                                 HStack {
-                                    Text("Неделя")
+                                    Text("1Д")
                                         .foregroundColor(.white)
                                 }
-                                .frame(width: 70, height: 35)
+                                .frame(width: 40, height: 35)
                                 .background(Color.white.opacity(0.3))
                                 .cornerRadius(5)
                             } else {
                                 HStack {
-                                    Text("Неделя")
+                                    Text("1Д")
                                         .foregroundColor(.white)
                                 }
                                 .onTapGesture {
+                                    self.weekButtonChosen = false
+                                    self.monthButtonChosen = false
+                                    self.yearButtonChosen = false
+                                    self.dayButtonChosen.toggle()
+                                    webService.getChartDataForStock(for: "Day", symbol: stock.symbol!) { res in
+                                        self.points = res
+                                        minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
+                                        maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
+                                        averageValueOfPrice = NSString(format: "%.2f", (((points.max() ?? 0.0) + (points.min() ?? 0.0)) / 2.0)) as String
+                                        self.chartColor = (self.points.last ?? 0.0) - (self.points.first ?? 0.0) >= 0.0 ? Color.green : Color.red
+                                    }
+                                }
+                            }
+                            
+                            if (weekButtonChosen) {
+                                HStack {
+                                    Text("1Н")
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 40, height: 35)
+                                .background(Color.white.opacity(0.3))
+                                .cornerRadius(5)
+                            } else {
+                                HStack {
+                                    Text("1Н")
+                                        .foregroundColor(.white)
+                                }
+                                .onTapGesture {
+                                    self.dayButtonChosen = false
                                     self.monthButtonChosen = false
                                     self.yearButtonChosen = false
                                     self.weekButtonChosen.toggle()
@@ -96,18 +126,19 @@ struct StockDetailsView: View {
                             
                             if (monthButtonChosen) {
                                 HStack {
-                                    Text("Месяц")
+                                    Text("1М")
                                         .foregroundColor(.white)
                                 }
-                                .frame(width: 65, height: 35)
+                                .frame(width: 40, height: 35)
                                 .background(Color.white.opacity(0.3))
                                 .cornerRadius(5)
                             } else {
                                 HStack {
-                                    Text("Месяц")
+                                    Text("1М")
                                         .foregroundColor(.white)
                                 }
                                 .onTapGesture {
+                                    self.dayButtonChosen = false
                                     self.weekButtonChosen = false
                                     self.yearButtonChosen = false
                                     self.monthButtonChosen.toggle()
@@ -123,7 +154,7 @@ struct StockDetailsView: View {
                             
                             if (yearButtonChosen) {
                                 HStack {
-                                    Text("Год")
+                                    Text("1Г")
                                         .foregroundColor(.white)
                                 }
                                 .frame(width: 40, height: 35)
@@ -131,10 +162,11 @@ struct StockDetailsView: View {
                                 .cornerRadius(5)
                             } else {
                                 HStack {
-                                    Text("Год")
+                                    Text("1Г")
                                         .foregroundColor(.white)
                                 }
                                 .onTapGesture {
+                                    self.dayButtonChosen = false
                                     self.weekButtonChosen = false
                                     self.monthButtonChosen = false
                                     self.yearButtonChosen.toggle()
@@ -182,7 +214,7 @@ struct StockDetailsView: View {
                                                offset: 0.03,
                                                currentValueLineType: .dash(color: Color.white.opacity(0.5), lineWidth: 1, dash: [2]))
                                     .onAppear() {
-                                        webService.getChartDataForStock(for: "Week", symbol: stock.symbol!) { res in
+                                        webService.getChartDataForStock(for: "Day", symbol: stock.symbol!) { res in
                                             self.points = res
                                             minValueOfPrice = NSString(format: "%.2f", points.min() ?? "") as String
                                             maxValueOfPrice = NSString(format: "%.2f", points.max() ?? "") as String
@@ -202,48 +234,7 @@ struct StockDetailsView: View {
                         }
                         .padding([.top, .leading, .trailing])
                         
-                        VStack {
-                            HStack {
-                                Text("Рыночн. кап.")
-                                    .foregroundColor(Color.white)
-                                Spacer()
-                                Text(separatedNumber(marketCap: stock.marketCap ?? 0))
-                                    .foregroundColor(Color.white)
-                            }
-                            
-                            Divider()
-                                .background(Color.white.opacity(0.15))
-                            HStack {
-                                Text("P/E компании")
-                                    .foregroundColor(Color.white)
-                                Spacer()
-                                Text("\(NSString(format: "%.2f", stock.peRatio ?? ""))")
-                                    .foregroundColor(Color.white)
-                            }
-                            
-                            Divider()
-                                .background(Color.white.opacity(0.15))
-                            HStack {
-                                Text("Год. максимум")
-                                    .foregroundColor(Color.white)
-                                Spacer()
-                                Text("\(NSString(format: "%.2f", stock.week52High ?? ""))")
-                                    .foregroundColor(Color.white)
-                            }
-                            
-                            Divider()
-                                .background(Color.white.opacity(0.15))
-                            HStack {
-                                Text("Год. минимум")
-                                    .foregroundColor(Color.white)
-                                Spacer()
-                                Text("\(NSString(format: "%.2f", stock.week52Low ?? ""))")
-                                    .foregroundColor(Color.white)
-                            }
-                            Divider()
-                                .background(Color.white.opacity(0.15))
-                        }
-                        .padding()
+                        CompanyIndicatorsView(stock: self.stock)
                         
                         HStack {
                             Text("Новости недели, \("\(stock.symbol ?? "")".uppercased())")

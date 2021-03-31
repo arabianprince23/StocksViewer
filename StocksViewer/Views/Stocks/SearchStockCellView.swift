@@ -13,7 +13,7 @@ import SwiftUI
 struct SearchStockCellView: View {
     
     @ObservedObject var webService: WebService
-    @ObservedObject var stockData: StockData
+    @ObservedObject var stockData: StocksData
     var showAddButton: Bool
     var searchStock: SearchStock
     

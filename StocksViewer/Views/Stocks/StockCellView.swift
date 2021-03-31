@@ -12,7 +12,7 @@ import SwiftUI
  */
 struct StockCellView: View {
     
-    @EnvironmentObject var stocksData: StockData
+    @EnvironmentObject var stocksData: StocksData
     @ObservedObject var webService: WebService = WebService()
     @State var stock: Stock = Stock(symbol: "-", description: "-", price: nil, change: nil)
     @State var showDeleteAlert: Bool = false
@@ -64,25 +64,7 @@ struct StockCellView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                 
-                if ((stock.change ?? 0.0) >= 0) {
-                    Text("     +\(NSString(format: "%.2f", stock.change ?? ""))")
-                        .foregroundColor(Color.white)
-                        .font(.subheadline)
-                        .bold()
-                        .padding(2)
-                        .padding(.trailing, 4)
-                        .background(Color.green)
-                        .cornerRadius(4)
-                } else {
-                    Text("     \(NSString(format: "%.2f", stock.change ?? ""))")
-                        .foregroundColor(Color.white)
-                        .font(.subheadline)
-                        .bold()
-                        .padding(2)
-                        .padding(.trailing, 4)
-                        .background(Color.red)
-                        .cornerRadius(4)
-                }
+                PriceChangeDollarsView(change: stock.change)
             }
         }
         .frame(height: 70)

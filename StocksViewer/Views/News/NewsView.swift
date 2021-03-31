@@ -12,7 +12,7 @@ import SwiftUI
  */
 struct NewsView: View {
     
-    @EnvironmentObject var stocksData: StockData
+    @EnvironmentObject var stocksData: StocksData
     @ObservedObject var webService: WebService
     @State var news: [News] = []
     @State var dataIsReady: Bool = false

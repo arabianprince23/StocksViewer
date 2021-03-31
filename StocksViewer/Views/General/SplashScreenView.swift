@@ -12,7 +12,7 @@ import SwiftUI
  */
 struct SplashScreenView: View {
     
-    @EnvironmentObject var stocksData: StockData
+    @EnvironmentObject var stocksData: StocksData
     
     init() {
         UITabBar.appearance().isTranslucent = true

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @EnvironmentObject var stocksData: StockData
+    @EnvironmentObject var stocksData: StocksData
     @ObservedObject var webService: WebService
     @State var searchTerm: String = "" // Запрос в поиске
     @State var searchResponseStocks: [SearchStock] = [] // Массив, обновляющийся в зависимости от запроса
