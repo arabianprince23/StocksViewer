@@ -16,10 +16,10 @@
 На главном экране отображаются избранные акции пользователя. При первом запуске, список акций наполняется несколькими популярыми акциями технологического сектора.
 
 ###### Поиск акций по тикеру или названию компании располагается здесь же. При поиске, акции можно добавлять в избранное.
-<img src="https://user-images.githubusercontent.com/57250290/112748049-f366e900-8fc1-11eb-8de0-5d34a6f6caf6.mov" alt="alt text" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/57250290/113343558-a758d300-9338-11eb-9226-8e6b75625d0a.mov" alt="alt text" width="300" height="600">
 
 ###### Также, акции можно удалять из списка долгим удержанием на акции.
-<img src="https://user-images.githubusercontent.com/57250290/112748212-ff9f7600-8fc2-11eb-8bd2-fb0eaad7f6fd.mov" alt="alt text" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/57250290/113343604-b6d81c00-9338-11eb-9577-51ff6d6c4051.mov" alt="alt text" width="300" height="600">
 
 Все изменения, разумеется, сохраняются на устройстве. Для этого используется CoreData.
 
@@ -27,7 +27,7 @@
 
 На внутреннем экране акции, представлены основные данные по акции: графики за разные периоды, основные показатели, новости компании.
 ######
-<img src="https://user-images.githubusercontent.com/57250290/112748263-586f0e80-8fc3-11eb-9ae3-e953eaf60bf3.mov" alt="alt text" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/57250290/113343699-d5d6ae00-9338-11eb-8715-1f1bb441a8d1.mov" alt="alt text" width="300" height="600">
 
 ### Экран новостей
 
@@ -35,11 +35,18 @@
 ######
 <img src="https://user-images.githubusercontent.com/57250290/112748346-bd2a6900-8fc3-11eb-83b5-f9af0454ecdc.mov" alt="alt text" width="300" height="600">
 
+### Экран отчетов
+
+На экране представлены отчёты всех компаний в ближайшую неделю. Интересующие события можно добавить в календарь с напоминанием на устройстве.
+
+######
+<img src="https://user-images.githubusercontent.com/57250290/113344009-37971800-9339-11eb-8f66-a6aebdb6765e.mov" alt="alt text" width="300" height="600">
+
 ### Кэширование данных
 
-При отсутствии подключения к сети, показываются последние кэшированные данные (акции на главном экране и последние новости). 
+При отсутствии подключения к сети, показываются последние кэшированные данные (акции на главном экране, последние новости и отчёты недели). 
 ######
-<img src="https://user-images.githubusercontent.com/57250290/112748372-e0551880-8fc3-11eb-8c7a-a86125a44f8c.mov" alt="alt text" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/57250290/113344043-4087e980-9339-11eb-8afc-37f35f9b14cb.mov" alt="alt text" width="300" height="600">
 
 Ещё больше плюшек - в приложении!
 
