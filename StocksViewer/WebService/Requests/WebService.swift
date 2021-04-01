@@ -205,8 +205,6 @@ class WebService: ObservableObject {
     }
     
     func getReports(completion: @escaping ([Report]) -> Void) {
-        // https://finnhub.io/api/v1/calendar/earnings?from=2021-03-01&to=2021-03-09&token=c18dev748v6oak5h3l2g
-        
         var reports: [Report] = []
         
         let dateFormatter = DateFormatter()
@@ -219,7 +217,14 @@ class WebService: ObservableObject {
             switch response.result {
             case .success(let value):
                 
-                // TODO
+                let json = JSON(value)
+                for (_, subJson) : (String, JSON) in json["earningsCalendar"] {
+                    
+                    let symbol: String? = subJson["symbol"].string
+                    let date: String? = subJson["date"].string
+                    
+                    reports.append(Report(symbol: symbol, date: date))
+                }
                 
                 completion(reports)
                 

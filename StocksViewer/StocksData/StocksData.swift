@@ -21,10 +21,13 @@ public class StocksData: ObservableObject {
     @Published var favoriteStocks: [String] = []
     @Published var stocksCacheStorage: Storage<String, Stock>?
     @Published var newsCacheStorage: Storage<String, [News]>?
+    @Published var reportsCacheStorage: Storage<String, [Report]>?
     private let stocksDiskConfig: DiskConfig
     private let stocksMemoryConfig: MemoryConfig
     private let newsDiskConfig: DiskConfig
     private let newsMemoryConfig: MemoryConfig
+    private let reportsDiskConfig: DiskConfig
+    private let reportsMemoryConfig: MemoryConfig
     
     init() {
         
@@ -37,10 +40,13 @@ public class StocksData: ObservableObject {
         self.stocksMemoryConfig = MemoryConfig(expiry: .never)
         self.newsDiskConfig = DiskConfig(name: "newsCache")
         self.newsMemoryConfig = MemoryConfig(expiry: .never)
+        self.reportsDiskConfig = DiskConfig(name: "reportsCache")
+        self.reportsMemoryConfig = MemoryConfig(expiry: .never)
         
         do {
             self.stocksCacheStorage = try Storage(diskConfig: stocksDiskConfig, memoryConfig: stocksMemoryConfig, transformer: TransformerFactory.forCodable(ofType: Stock.self))
             self.newsCacheStorage = try Storage(diskConfig: newsDiskConfig, memoryConfig: newsMemoryConfig, transformer: TransformerFactory.forCodable(ofType: [News].self))
+            self.reportsCacheStorage = try Storage(diskConfig: reportsDiskConfig, memoryConfig: reportsMemoryConfig, transformer: TransformerFactory.forCodable(ofType: [Report].self))
         } catch {
           print("Cache storage error")
         }

@@ -25,6 +25,7 @@
 		D911990A26038BC00070EB56 /* SearchStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911990926038BC00070EB56 /* SearchStock.swift */; };
 		D91199112603B93D0070EB56 /* StocksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91199102603B93D0070EB56 /* StocksData.swift */; };
 		D91199192604DFEB0070EB56 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91199182604DFEB0070EB56 /* Extensions.swift */; };
+		D921C4BF2615AA73003F9A63 /* EventsLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D921C4BE2615AA73003F9A63 /* EventsLogic.swift */; };
 		D95196E32605E0BC00C29BA4 /* StocksViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D95196E12605E0BC00C29BA4 /* StocksViewer.xcdatamodeld */; };
 		D99730A0260E3631002A9CE5 /* CheckTheConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D997309F260E3631002A9CE5 /* CheckTheConnection.swift */; };
 		D9BF724D2603737600BDED3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BF724C2603737600BDED3E /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		D911990926038BC00070EB56 /* SearchStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStock.swift; sourceTree = "<group>"; };
 		D91199102603B93D0070EB56 /* StocksData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksData.swift; sourceTree = "<group>"; };
 		D91199182604DFEB0070EB56 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D921C4BE2615AA73003F9A63 /* EventsLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLogic.swift; sourceTree = "<group>"; };
 		D95196E22605E0BC00C29BA4 /* StocksViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StocksViewer.xcdatamodel; sourceTree = "<group>"; };
 		D997309F260E3631002A9CE5 /* CheckTheConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTheConnection.swift; sourceTree = "<group>"; };
 		D9BF72432603737500BDED3E /* StocksViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 		D907B4ED2614EE0C00271445 /* ReportsCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				D921C4C12615AA76003F9A63 /* Events */,
 				D907B4E52614EE0900271445 /* ReportsView.swift */,
 				D907B4EF2614F38100271445 /* ReportsListView.swift */,
 				D907B4F72614F42000271445 /* ReportCellView.swift */,
@@ -198,6 +201,22 @@
 				D91199182604DFEB0070EB56 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D921C4BC26159DBF003F9A63 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D9BF72B7260377D900BDED3E /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		D921C4C12615AA76003F9A63 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D921C4BE2615AA73003F9A63 /* EventsLogic.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		D95196EA2605E0C500C29BA4 /* CoreDataModel */ = {
@@ -294,7 +313,6 @@
 		D9BF72812603749800BDED3E /* General */ = {
 			isa = PBXGroup;
 			children = (
-				D9BF72B7260377D900BDED3E /* SplashScreenView.swift */,
 				D9BF727E2603749400BDED3E /* MainView.swift */,
 			);
 			path = General;
@@ -303,6 +321,7 @@
 		D9BF72832603749D00BDED3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D921C4BC26159DBF003F9A63 /* SplashScreen */,
 				D9BF72812603749800BDED3E /* General */,
 				D9BF72A0260374F300BDED3E /* Stocks */,
 				D9BF728D260374B100BDED3E /* News */,
@@ -461,6 +480,7 @@
 				D9BF72B8260377D900BDED3E /* SplashScreenView.swift in Sources */,
 				D99730A0260E3631002A9CE5 /* CheckTheConnection.swift in Sources */,
 				D9082D89260741280068BB99 /* LightChart.swift in Sources */,
+				D921C4BF2615AA73003F9A63 /* EventsLogic.swift in Sources */,
 				D907B4F32614F3B700271445 /* Report.swift in Sources */,
 				D907B4F82614F42000271445 /* ReportCellView.swift in Sources */,
 				D9082D3926063C360068BB99 /* SearchView.swift in Sources */,

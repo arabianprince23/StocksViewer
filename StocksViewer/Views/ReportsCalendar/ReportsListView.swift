@@ -17,7 +17,7 @@ struct ReportsListView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(self.reports, id: \.symbol) { report in
+            ForEach(self.reports.reversed(), id: \.symbol) { report in
                 ReportCellView(report: report)
                 Divider()
                     .background(Color.white.opacity(0.2))

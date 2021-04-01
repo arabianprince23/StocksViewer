@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ReportCellView: View {
     
+    @State var presentAlert: Bool = false
     var report: Report
 
     var body: some View {
         HStack {
-            VStack {
+            VStack (alignment: .leading) {
                 Text(report.symbol ?? "-")
                     .font(.title2)
                     .fontWeight(.bold)
@@ -24,11 +25,20 @@ struct ReportCellView: View {
             }
             Spacer()
             VStack (alignment: .center) {
-                Image(systemName: "plus")
+                Text("Добавить событие")
                     .foregroundColor(.blue)
                     .onTapGesture {
-                        // TODO
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let date = dateFormatter.date(from: report.date ?? "")
+                        addEventToCalendar(title: "Отчётность \(report.symbol ?? "")", description: "Напоминание об отчётности \(report.symbol ?? "")", startDate: date ?? Date(), endDate: date ?? Date())
+                        self.presentAlert.toggle()
                     }
+                    .alert(isPresented: $presentAlert, content: {
+                        Alert(title: Text("Событие добавлено"),
+                              message: Text("Напоминание об отчётности \(report.symbol ?? "-") успешно добавлено в календарь!"),
+                              dismissButton: .default(Text("Хорошо")))
+                    })
             }
             
         }

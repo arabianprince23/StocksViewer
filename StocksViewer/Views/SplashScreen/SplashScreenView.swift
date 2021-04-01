@@ -33,7 +33,7 @@ struct SplashScreenView: View {
                     Text("Новости")
                 }
             
-            ReportsView()
+            ReportsView().environmentObject(stocksData)
                 .tabItem {
                     Image(systemName: "exclamationmark.bubble")
                     Text("Отчётности")
