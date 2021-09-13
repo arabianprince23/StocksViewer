@@ -1,6 +1,6 @@
 # StocksViewer – трекер акций
 
-###### Update: new version of app is availible on the AppStore: https://apps.apple.com/ru/app/stocksviewer/id1565940033
+###### Update: latest version of the app is availible now on the AppStore: https://apps.apple.com/ru/app/stocksviewer/id1565940033
 
 ### Проектная работа в рамках отоброчного этапа в Школу Мобильной Разработки Яндекса 2021.
 #### Проект выполнил Бен Мустафа Анас
